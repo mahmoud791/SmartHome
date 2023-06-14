@@ -1,4 +1,4 @@
-# 1 "MCAL/GPIO/MCAL_GPIO.c"
+# 1 "MCAL/Interrupts/MCAL_Interrupts_external.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,13 +6,12 @@
 # 1 "<built-in>" 2
 # 1 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "MCAL/GPIO/MCAL_GPIO.c" 2
+# 1 "MCAL/Interrupts/MCAL_Interrupts_external.c" 2
 
-
-# 1 "MCAL/GPIO/MCAL_GPIO.h" 1
-# 11 "MCAL/GPIO/MCAL_GPIO.h"
-# 1 "MCAL/GPIO/../PIC18_config.h" 1
-# 12 "MCAL/GPIO/../PIC18_config.h"
+# 1 "MCAL/Interrupts/MCAL_Interrupts_external.h" 1
+# 12 "MCAL/Interrupts/MCAL_Interrupts_external.h"
+# 1 "MCAL/Interrupts/../PIC18_config.h" 1
+# 12 "MCAL/Interrupts/../PIC18_config.h"
 # 1 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 1 3
 # 18 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4477,14 +4476,19 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 2 3
-# 12 "MCAL/GPIO/../PIC18_config.h" 2
-# 32 "MCAL/GPIO/../PIC18_config.h"
+# 12 "MCAL/Interrupts/../PIC18_config.h" 2
+# 32 "MCAL/Interrupts/../PIC18_config.h"
 typedef unsigned char StdReturnType;
-# 11 "MCAL/GPIO/MCAL_GPIO.h" 2
+# 12 "MCAL/Interrupts/MCAL_Interrupts_external.h" 2
 
-# 1 "MCAL/GPIO/MCAL_GPIO_config.h" 1
-# 12 "MCAL/GPIO/MCAL_GPIO.h" 2
-# 35 "MCAL/GPIO/MCAL_GPIO.h"
+# 1 "MCAL/Interrupts/MCAL_Interrupt_config.h" 1
+# 13 "MCAL/Interrupts/MCAL_Interrupts_external.h" 2
+
+# 1 "MCAL/Interrupts/../GPIO/MCAL_GPIO.h" 1
+# 12 "MCAL/Interrupts/../GPIO/MCAL_GPIO.h"
+# 1 "MCAL/Interrupts/../GPIO/MCAL_GPIO_config.h" 1
+# 12 "MCAL/Interrupts/../GPIO/MCAL_GPIO.h" 2
+# 35 "MCAL/Interrupts/../GPIO/MCAL_GPIO.h"
 typedef enum{
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -4537,7 +4541,75 @@ StdReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *directi
 StdReturnType gpio_port_write_logic(port_index_t port, uint8_t logic);
 StdReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic);
 StdReturnType gpio_port_toggle_logic(port_index_t port);
-# 3 "MCAL/GPIO/MCAL_GPIO.c" 2
+# 14 "MCAL/Interrupts/MCAL_Interrupts_external.h" 2
+
+
+
+
+typedef enum {
+    FALLING_EDGE = 0,
+    RISING_EDGE
+}Edge_select;
+
+typedef enum {
+    LOW_PRIORITY = 0,
+    HIGH_PRIORITY
+}Priority_select;
+
+
+typedef struct{
+    void (*interrupt_handler) (void);
+    Edge_select edge;
+}Ext_INT0_t;
+
+
+typedef struct{
+    void (*interrupt_handler) (void);
+    Edge_select edge;
+    Priority_select priority;
+}Ext_INT1_t;
+
+typedef struct{
+    void (*interrupt_handler) (void);
+    Edge_select edge;
+    Priority_select priority;
+}Ext_INT2_t;
+
+
+
+
+
+StdReturnType Init_Ext_INT0(Ext_INT0_t * int0_obj);
+StdReturnType Init_Ext_INT1(Ext_INT1_t * int1_obj);
+StdReturnType Init_Ext_INT2(Ext_INT2_t * int2_obj);
+# 2 "MCAL/Interrupts/MCAL_Interrupts_external.c" 2
+
+
+
+static void (*InterruptHandler_INT0) (void) = ((void*)0);
+static void (*InterruptHandler_INT1) (void) = ((void*)0);
+static void (*InterruptHandler_INT2) (void) = ((void*)0);
+
+static pin_config_t int0_pin = {
+            .direction= GPIO_DIRECTION_INPUT,
+            .logic = GPIO_LOW,
+            .port = PORTB_INDEX,
+            .pin = GPIO_PIN0,
+        };
+
+static pin_config_t int1_pin = {
+            .direction= GPIO_DIRECTION_INPUT,
+            .logic = GPIO_LOW,
+            .port = PORTB_INDEX,
+            .pin = GPIO_PIN1,
+        };
+
+static pin_config_t int2_pin = {
+            .direction= GPIO_DIRECTION_INPUT,
+            .logic = GPIO_LOW,
+            .port = PORTB_INDEX,
+            .pin = GPIO_PIN2,
+        };
 
 
 
@@ -4545,146 +4617,154 @@ StdReturnType gpio_port_toggle_logic(port_index_t port);
 
 
 
-volatile uint8_t *tris_registers[] = {&TRISA, &TRISB, &TRISC, &TRISD, &TRISE};
+StdReturnType Init_Ext_INT0(Ext_INT0_t * int0_obj){
+    StdReturnType ret = 1;
+    if(((void*)0) == int0_obj){
+        ret = 0;
+    }
+    else{
 
-volatile uint8_t *lat_registers[] = {&LATA , &LATB , &LATC , &LATD , &LATE};
 
-volatile uint8_t *port_registers[] = {&PORTA, &PORTB, &PORTC, &PORTD, &PORTE};
-# 28 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_pin_direction_intialize(const pin_config_t *_pin_config){
-    StdReturnType ret = 1;
-    if(((void*)0) == _pin_config || _pin_config->pin > 8 -1){
-        ret = 0;
-    }
-    else{
-        switch(_pin_config->direction){
-            case GPIO_DIRECTION_OUTPUT :
-                (*tris_registers[_pin_config->port] &= ~((uint8_t)1 << _pin_config->pin));
-                break;
-            case GPIO_DIRECTION_INPUT :
-                (*tris_registers[_pin_config->port] |= ((uint8_t)1 << _pin_config->pin));
-                break;
-            default : ret = 0;
-        }
+        INTCONbits.INT0IE = 0;
+
+
+
+        INTCONbits.INT0IF = 0;
+
+
+
+
+        ret = gpio_pin_direction_intialize(&int0_pin);
+
+
+
+
+        INTCON2bits.INTEDG0 = int0_obj->edge;
+
+
+
+
+        InterruptHandler_INT0 = int0_obj->interrupt_handler;
+# 76 "MCAL/Interrupts/MCAL_Interrupts_external.c"
+        INTCONbits.GIE = 1;
+
+
+
+        INTCONbits.INT0IE =1;
+
+
     }
     return ret;
+
 }
-# 57 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_pin_get_direction_status(const pin_config_t *_pin_config, direction_t *direction_status){
+
+
+StdReturnType Init_Ext_INT1(Ext_INT1_t * int1_obj){
     StdReturnType ret = 1;
-    if(((void*)0) == _pin_config || ((void*)0) == direction_status || _pin_config->pin > 8 -1){
+    if(((void*)0) == int1_obj){
         ret = 0;
     }
     else{
-        *direction_status = ((*tris_registers[_pin_config->port] >> _pin_config->pin) & (uint8_t)1);
+
+        INTCON3bits.INT1E = 0;
+
+
+
+        INTCON3bits.INT1IF=0;
+
+
+        ret = gpio_pin_direction_intialize(&int1_pin);
+
+
+
+        INTCON2bits.INTEDG1 = int1_obj->edge;
+
+
+
+        InterruptHandler_INT1 = int1_obj->interrupt_handler;
+# 126 "MCAL/Interrupts/MCAL_Interrupts_external.c"
+        INTCONbits.GIE = 1;
+
+
+
+       INTCON3bits.INT1IE =1;
+
     }
     return ret;
+
 }
-# 78 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_pin_write_logic(const pin_config_t *_pin_config, logic_t logic){
+
+
+StdReturnType Init_Ext_INT2(Ext_INT2_t * int2_obj){
     StdReturnType ret = 1;
-    if(((void*)0) == _pin_config || _pin_config->pin > 8 -1){
+    if(((void*)0) == int2_obj){
         ret = 0;
     }
     else{
-        switch(logic){
-            case GPIO_LOW :
-                (*lat_registers[_pin_config->port] &= ~((uint8_t)1 << _pin_config->pin));
-                break;
-            case GPIO_HIGH :
-                (*lat_registers[_pin_config->port] |= ((uint8_t)1 << _pin_config->pin));
-                break;
-            default : ret = 0;
-        }
+
+        INTCON3bits.INT2IE = 0;
+
+
+
+        INTCON3bits.INT2IF=0;
+
+
+        ret = gpio_pin_direction_intialize(&int2_pin);
+
+
+
+        INTCON2bits.INTEDG2 = int2_obj->edge;
+
+
+
+        InterruptHandler_INT2 = int2_obj->interrupt_handler;
+# 176 "MCAL/Interrupts/MCAL_Interrupts_external.c"
+        INTCONbits.GIE = 1;
+
+
+
+       INTCON3bits.INT2IE =1;
+
     }
     return ret;
+
 }
-# 107 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_pin_read_logic(const pin_config_t *_pin_config, logic_t *logic){
-    StdReturnType ret = 1;
-    if(((void*)0) == _pin_config || ((void*)0) == logic || _pin_config->pin > 8 -1){
-        ret = 0;
-    }
-    else{
-        *logic = ((*port_registers[_pin_config->port] >> _pin_config->pin) & (uint8_t)1);
-    }
-    return ret;
+
+
+
+void ISR_INT0(void){
+
+    INTCONbits.INT0IF = 0;
+
+
+
+
+
+    if(InterruptHandler_INT0)InterruptHandler_INT0();
+
 }
-# 127 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config){
-    StdReturnType ret = 1;
-    if(((void*)0) == _pin_config || _pin_config->pin > 8 -1){
-        ret = 0;
-    }
-    else{
-        (*lat_registers[_pin_config->port] ^= ((uint8_t)1 << _pin_config->pin));
-    }
-    return ret;
+
+void ISR_INT1(void){
+
+    INTCON3bits.INT1IF=0;
+
+
+
+
+
+    if(InterruptHandler_INT1)InterruptHandler_INT1();
+
 }
-# 151 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_pin_intialize(const pin_config_t *_pin_config){
-    StdReturnType ret = 1;
-    if(((void*)0) == _pin_config || _pin_config->pin > 8 -1){
-        ret = 0;
-    }
-    else{
-        ret = gpio_pin_direction_intialize(_pin_config);
-        ret = gpio_pin_write_logic(_pin_config, _pin_config->logic);
-    }
-    return ret;
-}
-# 173 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_port_direction_intialize(port_index_t port, uint8_t direction){
-    StdReturnType ret = 1;
-    if(port > 5 -1){
-        ret = 0;
-    }
-    else{
-        *tris_registers[port] = direction;
-    }
-    return ret;
-}
-# 194 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *direction_status){
-    StdReturnType ret = 1;
-    if((((void*)0) == direction_status) && (port > 5 -1)){
-        ret = 0;
-    }
-    else{
-        *direction_status = *tris_registers[port];
-    }
-    return ret;
-}
-# 215 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_port_write_logic(port_index_t port, uint8_t logic){
-    StdReturnType ret = 1;
-    if(port > 5 -1){
-        ret = 0;
-    }
-    else{
-        *lat_registers[port] = logic;
-    }
-    return ret;
-}
-# 236 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic){
-    StdReturnType ret = 1;
-    if((((void*)0) == logic) && (port > 5 -1)){
-        ret = 0;
-    }
-    else{
-        *logic = *lat_registers[port];
-    }
-    return ret;
-}
-# 256 "MCAL/GPIO/MCAL_GPIO.c"
-StdReturnType gpio_port_toggle_logic(port_index_t port){
-    StdReturnType ret = 1;
-    if(port > 5 -1){
-        ret = 0;
-    }
-    else{
-        *lat_registers[port] ^= 0xFF;
-    }
-    return ret;
+
+
+void ISR_INT2(void){
+
+    INTCON3bits.INT2IF=0;
+
+
+
+
+
+    if(InterruptHandler_INT2)InterruptHandler_INT2();
+
 }

@@ -95,6 +95,31 @@ StdReturnType gpio_pin_write_logic(const pin_config_t *_pin_config, logic_t logi
 }
 
 
+StdReturnType gpio_set_pin_high(const pin_config_t *_pin_config){
+    StdReturnType ret = E_OK;
+    if(NULL == _pin_config || _pin_config->pin > PORT_PIN_MAX_NUMBER-1){
+        ret = E_NOT_OK;
+    }
+    else{
+        SET_BIT(*lat_registers[_pin_config->port], _pin_config->pin);
+    }
+    return ret;
+
+}
+
+
+
+StdReturnType gpio_set_pin_low(const pin_config_t *_pin_config){
+    StdReturnType ret = E_OK;
+    if(NULL == _pin_config || _pin_config->pin > PORT_PIN_MAX_NUMBER-1){
+        ret = E_NOT_OK;
+    }
+    else{
+        CLEAR_BIT(*lat_registers[_pin_config->port], _pin_config->pin);
+    }
+    return ret;
+}
+
 /**
  * 
  * @param _pin_config pointer to the configurations @ref pin_config_t 

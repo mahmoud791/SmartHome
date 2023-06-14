@@ -76,6 +76,8 @@ StdReturnType gpio_pin_write_logic(const pin_config_t *_pin_config, logic_t logi
 StdReturnType gpio_pin_read_logic(const pin_config_t *_pin_config, logic_t *logic);
 StdReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config);
 StdReturnType gpio_pin_intialize(const pin_config_t *_pin_config);
+StdReturnType gpio_set_pin_high(const pin_config_t *_pin_config);
+StdReturnType gpio_set_pin_low(const pin_config_t *_pin_config);
 
 
 #if GPIO_PORT_MODE == ENABLE

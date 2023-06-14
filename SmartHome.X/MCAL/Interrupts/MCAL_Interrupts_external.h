@@ -11,6 +11,7 @@
 /*   ******************     Includes  *********************       */
 #include"../PIC18_config.h"
 #include"MCAL_Interrupt_config.h"
+#include "../GPIO/MCAL_GPIO.h"
 
 
 /**********   Data types Declarations ***********************     */
