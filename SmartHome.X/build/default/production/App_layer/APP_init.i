@@ -1,4 +1,4 @@
-# 1 "MCAL/Interrupts/MCAL_Interrupts_external.c"
+# 1 "App_layer/APP_init.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,12 +6,17 @@
 # 1 "<built-in>" 2
 # 1 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "MCAL/Interrupts/MCAL_Interrupts_external.c" 2
+# 1 "App_layer/APP_init.c" 2
 
-# 1 "MCAL/Interrupts/MCAL_Interrupts_external.h" 1
-# 12 "MCAL/Interrupts/MCAL_Interrupts_external.h"
-# 1 "MCAL/Interrupts/../PIC18_config.h" 1
-# 12 "MCAL/Interrupts/../PIC18_config.h"
+
+# 1 "App_layer/APP_init.h" 1
+# 11 "App_layer/APP_init.h"
+# 1 "App_layer/../ECUL/led/ECUL_led.h" 1
+# 12 "App_layer/../ECUL/led/ECUL_led.h"
+# 1 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO.h" 1
+# 11 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO.h"
+# 1 "App_layer/../ECUL/led/../../MCAL/GPIO/../PIC18_config.h" 1
+# 12 "App_layer/../ECUL/led/../../MCAL/GPIO/../PIC18_config.h"
 # 1 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 1 3
 # 18 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4476,19 +4481,14 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 2 3
-# 12 "MCAL/Interrupts/../PIC18_config.h" 2
-# 34 "MCAL/Interrupts/../PIC18_config.h"
+# 12 "App_layer/../ECUL/led/../../MCAL/GPIO/../PIC18_config.h" 2
+# 34 "App_layer/../ECUL/led/../../MCAL/GPIO/../PIC18_config.h"
 typedef unsigned char StdReturnType;
-# 12 "MCAL/Interrupts/MCAL_Interrupts_external.h" 2
+# 11 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO.h" 2
 
-# 1 "MCAL/Interrupts/MCAL_Interrupt_config.h" 1
-# 13 "MCAL/Interrupts/MCAL_Interrupts_external.h" 2
-
-# 1 "MCAL/Interrupts/../GPIO/MCAL_GPIO.h" 1
-# 12 "MCAL/Interrupts/../GPIO/MCAL_GPIO.h"
-# 1 "MCAL/Interrupts/../GPIO/MCAL_GPIO_config.h" 1
-# 12 "MCAL/Interrupts/../GPIO/MCAL_GPIO.h" 2
-# 35 "MCAL/Interrupts/../GPIO/MCAL_GPIO.h"
+# 1 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO_config.h" 1
+# 12 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO.h" 2
+# 35 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO.h"
 typedef enum{
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -4543,7 +4543,28 @@ StdReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *directi
 StdReturnType gpio_port_write_logic(port_index_t port, uint8_t logic);
 StdReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic);
 StdReturnType gpio_port_toggle_logic(port_index_t port);
-# 14 "MCAL/Interrupts/MCAL_Interrupts_external.h" 2
+# 12 "App_layer/../ECUL/led/ECUL_led.h" 2
+
+
+
+
+typedef struct{
+    uint8_t led_port :3;
+    uint8_t led_pin_index :3;
+
+}led_config_t;
+
+
+StdReturnType led_init(const led_config_t *led);
+StdReturnType led_on(const led_config_t *led);
+StdReturnType led_off(const led_config_t *led);
+# 11 "App_layer/APP_init.h" 2
+
+# 1 "App_layer/../MCAL/Interrupts/MCAL_Interrupts_external.h" 1
+# 13 "App_layer/../MCAL/Interrupts/MCAL_Interrupts_external.h"
+# 1 "App_layer/../MCAL/Interrupts/MCAL_Interrupt_config.h" 1
+# 13 "App_layer/../MCAL/Interrupts/MCAL_Interrupts_external.h" 2
+
 
 
 
@@ -4584,221 +4605,63 @@ typedef struct{
 StdReturnType Init_Ext_INT0(Ext_INT0_t * int0_obj);
 StdReturnType Init_Ext_INT1(Ext_INT1_t * int1_obj);
 StdReturnType Init_Ext_INT2(Ext_INT2_t * int2_obj);
-# 2 "MCAL/Interrupts/MCAL_Interrupts_external.c" 2
+# 12 "App_layer/APP_init.h" 2
 
 
 
-static void (*InterruptHandler_INT0) (void) = ((void*)0);
-static void (*InterruptHandler_INT1) (void) = ((void*)0);
-static void (*InterruptHandler_INT2) (void) = ((void*)0);
-# 20 "MCAL/Interrupts/MCAL_Interrupts_external.c"
-StdReturnType Init_Ext_INT0(Ext_INT0_t * int0_obj){
-    StdReturnType ret = 1;
-    if(((void*)0) == int0_obj){
-        ret = 0;
+
+
+
+
+StdReturnType app_init(void);
+# 3 "App_layer/APP_init.c" 2
+
+
+
+
+static void interruptHandler_ExtInt0(void);
+
+
+
+
+
+
+static uint8_t cnt = 1;
+
+led_config_t led1 = {
+    .led_port = PORTD_INDEX,
+    .led_pin_index = GPIO_PIN0
+
+};
+Ext_INT0_t ExtInt0 = {
+    .edge = RISING_EDGE,
+    .interrupt_handler = interruptHandler_ExtInt0
+};
+
+
+
+
+static void interruptHandler_ExtInt0(void){
+    uint8_t i;
+
+    for(i=0;i<=cnt;i++){
+        led_on(&led1);
+        _delay((unsigned long)((500)*(4000000UL/4000.0)));
+        led_off(&led1);
+        _delay((unsigned long)((500)*(4000000UL/4000.0)));
     }
-    else{
 
-
-        INTCONbits.INT0IE = 0;
-
-
-
-        INTCONbits.INT0IF = 0;
-
-
-
-        pin_config_t int0_pin = {
-            .direction= GPIO_DIRECTION_INPUT,
-            .logic = GPIO_LOW,
-            .port = PORTB_INDEX,
-            .pin = GPIO_PIN0,
-        };
-
-
-        ret = gpio_pin_direction_intialize(&int0_pin);
-
-
-
-
-        INTCON2bits.INTEDG0 = int0_obj->edge;
-
-
-
-
-        InterruptHandler_INT0 = int0_obj->interrupt_handler;
-
-
-
-
-        RCONbits.IPEN = 1;
-
-
-
-        INTCONbits.GIEH = 1;
-
-
-
-
-
-
-
-        INTCONbits.INT0IE =1;
-
-
-    }
-    return ret;
+    if(cnt>=10)cnt=1;
+    else cnt++;
 
 }
 
+StdReturnType app_init(void){
+   StdReturnType ret = 1;
 
-StdReturnType Init_Ext_INT1(Ext_INT1_t * int1_obj){
-    StdReturnType ret = 1;
-    if(((void*)0) == int1_obj){
-        ret = 0;
-    }
-    else{
+   ret = led_init(&led1);
+   ret = Init_Ext_INT0(&ExtInt0);
 
-        INTCON3bits.INT1E = 0;
 
-
-
-        INTCON3bits.INT1IF=0;
-
-
-        pin_config_t int1_pin = {
-            .direction= GPIO_DIRECTION_INPUT,
-            .logic = GPIO_LOW,
-            .port = PORTB_INDEX,
-            .pin = GPIO_PIN1,
-        };
-
-        ret = gpio_pin_direction_intialize(&int1_pin);
-
-
-
-        INTCON2bits.INTEDG1 = int1_obj->edge;
-
-
-
-        InterruptHandler_INT1 = int1_obj->interrupt_handler;
-
-
-
-        RCONbits.IPEN = 1;
-
-
-        INTCON3bits.INT1IP = int1_obj->priority;
-
-
-        if(int1_obj->priority == HIGH_PRIORITY) INTCONbits.GIEH =1;
-        else if (int1_obj->priority == LOW_PRIORITY) INTCONbits.GIEL =1;
-        else { ret = 0; }
-
-
-
-
-
-
-       INTCON3bits.INT1IE =1;
-
-    }
-    return ret;
-
-}
-
-
-StdReturnType Init_Ext_INT2(Ext_INT2_t * int2_obj){
-    StdReturnType ret = 1;
-    if(((void*)0) == int2_obj){
-        ret = 0;
-    }
-    else{
-
-        INTCON3bits.INT2IE = 0;
-
-
-
-        INTCON3bits.INT2IF=0;
-
-
-        pin_config_t int2_pin = {
-            .direction= GPIO_DIRECTION_INPUT,
-            .logic = GPIO_LOW,
-            .port = PORTB_INDEX,
-            .pin = GPIO_PIN2,
-        };
-
-        ret = gpio_pin_direction_intialize(&int2_pin);
-
-
-
-        INTCON2bits.INTEDG2 = int2_obj->edge;
-
-
-
-        InterruptHandler_INT2 = int2_obj->interrupt_handler;
-
-
-
-        RCONbits.IPEN = 1;
-
-
-        INTCON3bits.INT2IP = int2_obj->priority;
-
-
-
-        if(int2_obj->priority == HIGH_PRIORITY) INTCONbits.GIEH =1;
-        else if (int2_obj->priority == LOW_PRIORITY) INTCONbits.GIEL =1;
-        else { ret = 0; }
-
-
-
-
-
-
-       INTCON3bits.INT2IE =1;
-
-    }
-    return ret;
-
-}
-
-
-
-void ISR_INT0(void){
-
-    INTCONbits.INT0IF = 0;
-
-
-
-
-
-    if(InterruptHandler_INT0)InterruptHandler_INT0();
-
-}
-
-void ISR_INT1(void){
-
-    INTCON3bits.INT1IF=0;
-
-
-
-
-
-    if(InterruptHandler_INT1)InterruptHandler_INT1();
-
-}
-
-
-void ISR_INT2(void){
-
-    INTCON3bits.INT2IF=0;
-
-
-
-
-
-    if(InterruptHandler_INT2)InterruptHandler_INT2();
-
+   return ret;
 }

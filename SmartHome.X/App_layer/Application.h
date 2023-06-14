@@ -10,6 +10,7 @@
 
 /***********Includes***********/
 #include"../MCAL/PIC18_config.h"
+#include "APP_init.h"
 
 
 /***********Macros***********/

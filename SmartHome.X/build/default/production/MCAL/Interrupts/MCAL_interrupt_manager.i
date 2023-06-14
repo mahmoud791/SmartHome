@@ -4484,18 +4484,39 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 2 3
 # 12 "MCAL/Interrupts/../PIC18_config.h" 2
-# 32 "MCAL/Interrupts/../PIC18_config.h"
+# 34 "MCAL/Interrupts/../PIC18_config.h"
 typedef unsigned char StdReturnType;
 # 11 "MCAL/Interrupts/MCAL_Interrupt_config.h" 2
 # 3 "MCAL/Interrupts/MCAL_interrupt_manager.c" 2
-# 47 "MCAL/Interrupts/MCAL_interrupt_manager.c"
-void __attribute__((picinterrupt(("")))) InterruptManager(void){
+
+
+
+
+
+void __attribute__((picinterrupt(("")))) InterruptManagerHigh(void){
 
     if((INTCONbits.INT0IE == 1) && (INTCONbits.INT0IF == 1)){
         ISR_INT0();
     }
     else{ }
 
+
+    if((INTCON3bits.INT1IE == 1) && (INTCON3bits.INT1IF == 1)){
+        ISR_INT1();
+    }
+    else{ }
+
+    if((INTCON3bits.INT2IE == 1) && (INTCON3bits.INT2IF == 1)){
+        ISR_INT2();
+    }
+    else{ }
+
+
+
+
+}
+
+void __attribute__((picinterrupt(("low_priority")))) InterruptManagerLow(void){
 
     if((INTCON3bits.INT1IE == 1) && (INTCON3bits.INT1IF == 1)){
         ISR_INT1();

@@ -4477,12 +4477,153 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 2 3
 # 12 "App_layer/../MCAL/PIC18_config.h" 2
-# 32 "App_layer/../MCAL/PIC18_config.h"
+# 34 "App_layer/../MCAL/PIC18_config.h"
 typedef unsigned char StdReturnType;
 # 12 "App_layer/Application.h" 2
+
+# 1 "App_layer/APP_init.h" 1
+# 11 "App_layer/APP_init.h"
+# 1 "App_layer/../ECUL/led/ECUL_led.h" 1
+# 12 "App_layer/../ECUL/led/ECUL_led.h"
+# 1 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO.h" 1
+# 12 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO.h"
+# 1 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO_config.h" 1
+# 12 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO.h" 2
+# 35 "App_layer/../ECUL/led/../../MCAL/GPIO/MCAL_GPIO.h"
+typedef enum{
+    GPIO_LOW = 0,
+    GPIO_HIGH
+}logic_t;
+
+typedef enum{
+    GPIO_DIRECTION_OUTPUT = 0,
+    GPIO_DIRECTION_INPUT
+}direction_t;
+
+typedef enum{
+    GPIO_PIN0 = 0,
+    GPIO_PIN1,
+    GPIO_PIN2,
+    GPIO_PIN3,
+    GPIO_PIN4,
+    GPIO_PIN5,
+    GPIO_PIN6,
+    GPIO_PIN7
+}pin_index_t;
+
+typedef enum{
+    PORTA_INDEX = 0,
+    PORTB_INDEX,
+    PORTC_INDEX,
+    PORTD_INDEX,
+    PORTE_INDEX
+}port_index_t;
+
+typedef struct{
+    uint8_t port : 3;
+    uint8_t pin : 3;
+    uint8_t direction : 1;
+    uint8_t logic : 1;
+}pin_config_t;
+
+
+
+StdReturnType gpio_pin_direction_intialize(const pin_config_t *_pin_config);
+StdReturnType gpio_pin_get_direction_status(const pin_config_t *_pin_config, direction_t *direction_status);
+StdReturnType gpio_pin_write_logic(const pin_config_t *_pin_config, logic_t logic);
+StdReturnType gpio_pin_read_logic(const pin_config_t *_pin_config, logic_t *logic);
+StdReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config);
+StdReturnType gpio_pin_intialize(const pin_config_t *_pin_config);
+StdReturnType gpio_set_pin_high(const pin_config_t *_pin_config);
+StdReturnType gpio_set_pin_low(const pin_config_t *_pin_config);
+
+
+
+StdReturnType gpio_port_direction_intialize(port_index_t port, uint8_t direction);
+StdReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *direction_status);
+StdReturnType gpio_port_write_logic(port_index_t port, uint8_t logic);
+StdReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic);
+StdReturnType gpio_port_toggle_logic(port_index_t port);
+# 12 "App_layer/../ECUL/led/ECUL_led.h" 2
+
+
+
+
+typedef struct{
+    uint8_t led_port :3;
+    uint8_t led_pin_index :3;
+
+}led_config_t;
+
+
+StdReturnType led_init(const led_config_t *led);
+StdReturnType led_on(const led_config_t *led);
+StdReturnType led_off(const led_config_t *led);
+# 11 "App_layer/APP_init.h" 2
+
+# 1 "App_layer/../MCAL/Interrupts/MCAL_Interrupts_external.h" 1
+# 13 "App_layer/../MCAL/Interrupts/MCAL_Interrupts_external.h"
+# 1 "App_layer/../MCAL/Interrupts/MCAL_Interrupt_config.h" 1
+# 13 "App_layer/../MCAL/Interrupts/MCAL_Interrupts_external.h" 2
+
+
+
+
+
+typedef enum {
+    FALLING_EDGE = 0,
+    RISING_EDGE
+}Edge_select;
+
+typedef enum {
+    LOW_PRIORITY = 0,
+    HIGH_PRIORITY
+}Priority_select;
+
+
+typedef struct{
+    void (*interrupt_handler) (void);
+    Edge_select edge;
+}Ext_INT0_t;
+
+
+typedef struct{
+    void (*interrupt_handler) (void);
+    Edge_select edge;
+    Priority_select priority;
+}Ext_INT1_t;
+
+typedef struct{
+    void (*interrupt_handler) (void);
+    Edge_select edge;
+    Priority_select priority;
+}Ext_INT2_t;
+
+
+
+
+
+StdReturnType Init_Ext_INT0(Ext_INT0_t * int0_obj);
+StdReturnType Init_Ext_INT1(Ext_INT1_t * int1_obj);
+StdReturnType Init_Ext_INT2(Ext_INT2_t * int2_obj);
+# 12 "App_layer/APP_init.h" 2
+
+
+
+
+
+
+
+StdReturnType app_init(void);
+# 13 "App_layer/Application.h" 2
 # 2 "App_layer/Application.c" 2
 # 18 "App_layer/Application.c"
 void main(){
+
+    StdReturnType ret = 1;
+    ret = app_init();
+
+    while(1){}
 
 
 

@@ -12,6 +12,7 @@
       <itemPath>MCAL/GPIO/MCAL_GPIO_config.h</itemPath>
       <itemPath>MCAL/Interrupts/MCAL_interrupt_manager.h</itemPath>
       <itemPath>ECUL/led/ECUL_led.h</itemPath>
+      <itemPath>App_layer/APP_init.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -26,6 +27,7 @@
       <itemPath>MCAL/Interrupts/MCAL_Interrupts_external.c</itemPath>
       <itemPath>MCAL/Interrupts/MCAL_interrupt_manager.c</itemPath>
       <itemPath>ECUL/led/ECUL_led.c</itemPath>
+      <itemPath>App_layer/APP_init.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -35,6 +37,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>MCAL/GPIO</Elem>
+    <Elem>App_layer</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

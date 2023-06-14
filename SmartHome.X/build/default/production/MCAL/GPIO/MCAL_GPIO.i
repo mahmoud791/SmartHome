@@ -4478,7 +4478,7 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 2 3
 # 12 "MCAL/GPIO/../PIC18_config.h" 2
-# 32 "MCAL/GPIO/../PIC18_config.h"
+# 34 "MCAL/GPIO/../PIC18_config.h"
 typedef unsigned char StdReturnType;
 # 11 "MCAL/GPIO/MCAL_GPIO.h" 2
 
@@ -4529,6 +4529,8 @@ StdReturnType gpio_pin_write_logic(const pin_config_t *_pin_config, logic_t logi
 StdReturnType gpio_pin_read_logic(const pin_config_t *_pin_config, logic_t *logic);
 StdReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config);
 StdReturnType gpio_pin_intialize(const pin_config_t *_pin_config);
+StdReturnType gpio_set_pin_high(const pin_config_t *_pin_config);
+StdReturnType gpio_set_pin_low(const pin_config_t *_pin_config);
 
 
 
@@ -4599,7 +4601,30 @@ StdReturnType gpio_pin_write_logic(const pin_config_t *_pin_config, logic_t logi
     }
     return ret;
 }
-# 107 "MCAL/GPIO/MCAL_GPIO.c"
+# 106 "MCAL/GPIO/MCAL_GPIO.c"
+StdReturnType gpio_set_pin_high(const pin_config_t *_pin_config){
+    StdReturnType ret = 1;
+    if(((void*)0) == _pin_config || _pin_config->pin > 8 -1){
+        ret = 0;
+    }
+    else{
+        (*lat_registers[_pin_config->port] |= ((uint8_t)1 << _pin_config->pin));
+    }
+    return ret;
+
+}
+# 126 "MCAL/GPIO/MCAL_GPIO.c"
+StdReturnType gpio_set_pin_low(const pin_config_t *_pin_config){
+    StdReturnType ret = 1;
+    if(((void*)0) == _pin_config || _pin_config->pin > 8 -1){
+        ret = 0;
+    }
+    else{
+        (*lat_registers[_pin_config->port] &= ~((uint8_t)1 << _pin_config->pin));
+    }
+    return ret;
+}
+# 146 "MCAL/GPIO/MCAL_GPIO.c"
 StdReturnType gpio_pin_read_logic(const pin_config_t *_pin_config, logic_t *logic){
     StdReturnType ret = 1;
     if(((void*)0) == _pin_config || ((void*)0) == logic || _pin_config->pin > 8 -1){
@@ -4610,7 +4635,7 @@ StdReturnType gpio_pin_read_logic(const pin_config_t *_pin_config, logic_t *logi
     }
     return ret;
 }
-# 127 "MCAL/GPIO/MCAL_GPIO.c"
+# 166 "MCAL/GPIO/MCAL_GPIO.c"
 StdReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config){
     StdReturnType ret = 1;
     if(((void*)0) == _pin_config || _pin_config->pin > 8 -1){
@@ -4621,7 +4646,7 @@ StdReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config){
     }
     return ret;
 }
-# 151 "MCAL/GPIO/MCAL_GPIO.c"
+# 190 "MCAL/GPIO/MCAL_GPIO.c"
 StdReturnType gpio_pin_intialize(const pin_config_t *_pin_config){
     StdReturnType ret = 1;
     if(((void*)0) == _pin_config || _pin_config->pin > 8 -1){
@@ -4633,7 +4658,7 @@ StdReturnType gpio_pin_intialize(const pin_config_t *_pin_config){
     }
     return ret;
 }
-# 173 "MCAL/GPIO/MCAL_GPIO.c"
+# 212 "MCAL/GPIO/MCAL_GPIO.c"
 StdReturnType gpio_port_direction_intialize(port_index_t port, uint8_t direction){
     StdReturnType ret = 1;
     if(port > 5 -1){
@@ -4644,7 +4669,7 @@ StdReturnType gpio_port_direction_intialize(port_index_t port, uint8_t direction
     }
     return ret;
 }
-# 194 "MCAL/GPIO/MCAL_GPIO.c"
+# 233 "MCAL/GPIO/MCAL_GPIO.c"
 StdReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *direction_status){
     StdReturnType ret = 1;
     if((((void*)0) == direction_status) && (port > 5 -1)){
@@ -4655,7 +4680,7 @@ StdReturnType gpio_port_get_direction_status(port_index_t port, uint8_t *directi
     }
     return ret;
 }
-# 215 "MCAL/GPIO/MCAL_GPIO.c"
+# 254 "MCAL/GPIO/MCAL_GPIO.c"
 StdReturnType gpio_port_write_logic(port_index_t port, uint8_t logic){
     StdReturnType ret = 1;
     if(port > 5 -1){
@@ -4666,7 +4691,7 @@ StdReturnType gpio_port_write_logic(port_index_t port, uint8_t logic){
     }
     return ret;
 }
-# 236 "MCAL/GPIO/MCAL_GPIO.c"
+# 275 "MCAL/GPIO/MCAL_GPIO.c"
 StdReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic){
     StdReturnType ret = 1;
     if((((void*)0) == logic) && (port > 5 -1)){
@@ -4677,7 +4702,7 @@ StdReturnType gpio_port_read_logic(port_index_t port, uint8_t *logic){
     }
     return ret;
 }
-# 256 "MCAL/GPIO/MCAL_GPIO.c"
+# 295 "MCAL/GPIO/MCAL_GPIO.c"
 StdReturnType gpio_port_toggle_logic(port_index_t port){
     StdReturnType ret = 1;
     if(port > 5 -1){

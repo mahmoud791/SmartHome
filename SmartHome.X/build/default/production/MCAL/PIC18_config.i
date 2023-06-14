@@ -4477,7 +4477,7 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 2 3
 # 12 "MCAL/PIC18_config.h" 2
-# 32 "MCAL/PIC18_config.h"
+# 34 "MCAL/PIC18_config.h"
 typedef unsigned char StdReturnType;
 # 4 "MCAL/PIC18_config.c" 2
 

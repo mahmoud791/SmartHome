@@ -32,7 +32,13 @@ StdReturnType led_on(const led_config_t *led){
         ret = E_NOT_OK;
     }
     else{
-        ret = GPIO_setPinHigh(led->led_port,led->led_pin_index);
+        pin_config_t led_pin = {
+        .direction = GPIO_DIRECTION_OUTPUT,
+        .logic = GPIO_LOW,
+        .pin = led->led_pin_index,
+        .port = led->led_port
+        };
+        ret = gpio_set_pin_high(&led_pin);
     }
     
     return ret;
@@ -49,7 +55,13 @@ StdReturnType led_off(const led_config_t *led){
         ret = E_NOT_OK;
     }
     else{
-        ret = GPIO_setPinLow(led->led_port,led->led_pin_index);
+        pin_config_t led_pin = {
+        .direction = GPIO_DIRECTION_OUTPUT,
+        .logic = GPIO_LOW,
+        .pin = led->led_pin_index,
+        .port = led->led_port
+        };
+        ret = gpio_set_pin_low(&led_pin);
     }
     
     return ret;

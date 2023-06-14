@@ -18,6 +18,8 @@
 #define E_OK 1
 #define E_NOT_OK 0
 
+#define _XTAL_FREQ 4000000UL
+
 
 
 

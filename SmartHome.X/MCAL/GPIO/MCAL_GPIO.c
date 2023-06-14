@@ -95,6 +95,14 @@ StdReturnType gpio_pin_write_logic(const pin_config_t *_pin_config, logic_t logi
 }
 
 
+
+/**
+ * 
+ * @param _pin_config pointer to the configurations @ref pin_config_t 
+ * @return Status of the function
+ *          (E_OK) : The function done successfully
+ *          (E_NOT_OK) : The function has issue to perform this action
+ */
 StdReturnType gpio_set_pin_high(const pin_config_t *_pin_config){
     StdReturnType ret = E_OK;
     if(NULL == _pin_config || _pin_config->pin > PORT_PIN_MAX_NUMBER-1){
@@ -108,7 +116,13 @@ StdReturnType gpio_set_pin_high(const pin_config_t *_pin_config){
 }
 
 
-
+/**
+ * 
+ * @param _pin_config pointer to the configurations @ref pin_config_t 
+ * @return Status of the function
+ *          (E_OK) : The function done successfully
+ *          (E_NOT_OK) : The function has issue to perform this action
+ */
 StdReturnType gpio_set_pin_low(const pin_config_t *_pin_config){
     StdReturnType ret = E_OK;
     if(NULL == _pin_config || _pin_config->pin > PORT_PIN_MAX_NUMBER-1){

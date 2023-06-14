@@ -10,6 +10,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>MCAL/GPIO</sourceRootElem>
+                <sourceRootElem>App_layer</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

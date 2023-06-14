@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=App_layer/Application.c MCAL/PIC18_config.c MCAL/GPIO/MCAL_GPIO.c MCAL/Interrupts/MCAL_Interrupts_external.c MCAL/Interrupts/MCAL_interrupt_manager.c ECUL/led/ECUL_led.c
+SOURCEFILES_QUOTED_IF_SPACED=App_layer/Application.c MCAL/PIC18_config.c MCAL/GPIO/MCAL_GPIO.c MCAL/Interrupts/MCAL_Interrupts_external.c MCAL/Interrupts/MCAL_interrupt_manager.c ECUL/led/ECUL_led.c App_layer/APP_init.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/App_layer/Application.p1 ${OBJECTDIR}/MCAL/PIC18_config.p1 ${OBJECTDIR}/MCAL/GPIO/MCAL_GPIO.p1 ${OBJECTDIR}/MCAL/Interrupts/MCAL_Interrupts_external.p1 ${OBJECTDIR}/MCAL/Interrupts/MCAL_interrupt_manager.p1 ${OBJECTDIR}/ECUL/led/ECUL_led.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/App_layer/Application.p1.d ${OBJECTDIR}/MCAL/PIC18_config.p1.d ${OBJECTDIR}/MCAL/GPIO/MCAL_GPIO.p1.d ${OBJECTDIR}/MCAL/Interrupts/MCAL_Interrupts_external.p1.d ${OBJECTDIR}/MCAL/Interrupts/MCAL_interrupt_manager.p1.d ${OBJECTDIR}/ECUL/led/ECUL_led.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/App_layer/Application.p1 ${OBJECTDIR}/MCAL/PIC18_config.p1 ${OBJECTDIR}/MCAL/GPIO/MCAL_GPIO.p1 ${OBJECTDIR}/MCAL/Interrupts/MCAL_Interrupts_external.p1 ${OBJECTDIR}/MCAL/Interrupts/MCAL_interrupt_manager.p1 ${OBJECTDIR}/ECUL/led/ECUL_led.p1 ${OBJECTDIR}/App_layer/APP_init.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/App_layer/Application.p1.d ${OBJECTDIR}/MCAL/PIC18_config.p1.d ${OBJECTDIR}/MCAL/GPIO/MCAL_GPIO.p1.d ${OBJECTDIR}/MCAL/Interrupts/MCAL_Interrupts_external.p1.d ${OBJECTDIR}/MCAL/Interrupts/MCAL_interrupt_manager.p1.d ${OBJECTDIR}/ECUL/led/ECUL_led.p1.d ${OBJECTDIR}/App_layer/APP_init.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/App_layer/Application.p1 ${OBJECTDIR}/MCAL/PIC18_config.p1 ${OBJECTDIR}/MCAL/GPIO/MCAL_GPIO.p1 ${OBJECTDIR}/MCAL/Interrupts/MCAL_Interrupts_external.p1 ${OBJECTDIR}/MCAL/Interrupts/MCAL_interrupt_manager.p1 ${OBJECTDIR}/ECUL/led/ECUL_led.p1
+OBJECTFILES=${OBJECTDIR}/App_layer/Application.p1 ${OBJECTDIR}/MCAL/PIC18_config.p1 ${OBJECTDIR}/MCAL/GPIO/MCAL_GPIO.p1 ${OBJECTDIR}/MCAL/Interrupts/MCAL_Interrupts_external.p1 ${OBJECTDIR}/MCAL/Interrupts/MCAL_interrupt_manager.p1 ${OBJECTDIR}/ECUL/led/ECUL_led.p1 ${OBJECTDIR}/App_layer/APP_init.p1
 
 # Source Files
-SOURCEFILES=App_layer/Application.c MCAL/PIC18_config.c MCAL/GPIO/MCAL_GPIO.c MCAL/Interrupts/MCAL_Interrupts_external.c MCAL/Interrupts/MCAL_interrupt_manager.c ECUL/led/ECUL_led.c
+SOURCEFILES=App_layer/Application.c MCAL/PIC18_config.c MCAL/GPIO/MCAL_GPIO.c MCAL/Interrupts/MCAL_Interrupts_external.c MCAL/Interrupts/MCAL_interrupt_manager.c ECUL/led/ECUL_led.c App_layer/APP_init.c
 
 
 
@@ -136,6 +136,14 @@ ${OBJECTDIR}/ECUL/led/ECUL_led.p1: ECUL/led/ECUL_led.c  nbproject/Makefile-${CND
 	@-${MV} ${OBJECTDIR}/ECUL/led/ECUL_led.d ${OBJECTDIR}/ECUL/led/ECUL_led.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ECUL/led/ECUL_led.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/App_layer/APP_init.p1: App_layer/APP_init.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/App_layer" 
+	@${RM} ${OBJECTDIR}/App_layer/APP_init.p1.d 
+	@${RM} ${OBJECTDIR}/App_layer/APP_init.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/App_layer/APP_init.p1 App_layer/APP_init.c 
+	@-${MV} ${OBJECTDIR}/App_layer/APP_init.d ${OBJECTDIR}/App_layer/APP_init.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/App_layer/APP_init.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/App_layer/Application.p1: App_layer/Application.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/App_layer" 
@@ -184,6 +192,14 @@ ${OBJECTDIR}/ECUL/led/ECUL_led.p1: ECUL/led/ECUL_led.c  nbproject/Makefile-${CND
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/ECUL/led/ECUL_led.p1 ECUL/led/ECUL_led.c 
 	@-${MV} ${OBJECTDIR}/ECUL/led/ECUL_led.d ${OBJECTDIR}/ECUL/led/ECUL_led.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ECUL/led/ECUL_led.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/App_layer/APP_init.p1: App_layer/APP_init.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/App_layer" 
+	@${RM} ${OBJECTDIR}/App_layer/APP_init.p1.d 
+	@${RM} ${OBJECTDIR}/App_layer/APP_init.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/App_layer/APP_init.p1 App_layer/APP_init.c 
+	@-${MV} ${OBJECTDIR}/App_layer/APP_init.d ${OBJECTDIR}/App_layer/APP_init.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/App_layer/APP_init.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
