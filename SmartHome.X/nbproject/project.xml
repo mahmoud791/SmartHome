@@ -3,14 +3,18 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>SmartHome</name>
-            <creation-uuid>b2927cef-e996-4a5b-acfe-c33325375f57</creation-uuid>
+            <name>application</name>
+            <creation-uuid>f906b35c-6161-4265-8f36-e41d86dd33e1</creation-uuid>
             <make-project-type>0</make-project-type>
+            <c-extensions>c</c-extensions>
+            <cpp-extensions/>
+            <header-extensions>h</header-extensions>
+            <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>MCAL/GPIO</sourceRootElem>
-                <sourceRootElem>App_layer</sourceRootElem>
+                <sourceRootElem>MCAL_Layer</sourceRootElem>
+                <sourceRootElem>ECU_Layer</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

@@ -34,4 +34,4 @@ MP_CC_DIR="F:\xc8\bin"
 MP_AS_DIR="F:\xc8\bin"
 MP_LD_DIR="F:\xc8\bin"
 MP_AR_DIR="F:\xc8\bin"
-DFP_DIR=F:/MPLAB/packs/Microchip/PIC18Fxxxx_DFP/1.3.36
+DFP_DIR=C:/Users/sacri/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26
