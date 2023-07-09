@@ -1,8 +1,7 @@
 /* 
  * File:   ecu_chr_lcd.h
- * Author: Ahmed.Elghafar
- * https://www.linkedin.com/in/ahmedabdelghafarmohammed/
- * Created on February 9, 2021, 9:48 PM
+ * Author: Mahmoud AL ashry
+ * https://www.linkedin.com/in/mahmoud-al-ashry-7372b61a9/
  */
 
 #ifndef ECU_CHR_LCD_H
@@ -63,6 +62,7 @@ Std_ReturnType lcd_4bit_send_string(const chr_lcd_4bit_t *lcd, uint8 *str);
 Std_ReturnType lcd_4bit_send_string_pos(const chr_lcd_4bit_t *lcd, uint8 row, uint8 column, uint8 *str);
 Std_ReturnType lcd_4bit_send_custom_char(const chr_lcd_4bit_t *lcd, uint8 row, uint8 column, 
                                          const uint8 _chr[], uint8 mem_pos);
+Std_ReturnType lcd_4bit_clear(const chr_lcd_4bit_t *lcd);
 
 Std_ReturnType lcd_8bit_intialize(const chr_lcd_8bit_t *lcd);
 Std_ReturnType lcd_8bit_send_command(const chr_lcd_8bit_t *lcd, uint8 command);

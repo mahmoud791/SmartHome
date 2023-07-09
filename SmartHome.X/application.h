@@ -1,8 +1,7 @@
 /* 
  * File:   application.h
- * Author: Ahmed.Elghafar
- * https://www.linkedin.com/in/ahmedabdelghafarmohammed/
- * Created on November 28, 2020, 9:53 PM
+ * Author: Mahmoud AL ashry
+ * https://www.linkedin.com/in/mahmoud-al-ashry-7372b61a9/
  */
 
 #ifndef APPLICATION_H
@@ -10,6 +9,7 @@
 
 /* Section : Includes */
 #include "ECU_Layer/ecu_layer_init.h"
+#include "UserInterfaces.h"
 
 /* Section: Macro Declarations */
 
@@ -18,7 +18,7 @@
 /* Section: Data Type Declarations */
 
 /* Section: Function Declarations */
-void application_intialize(void);
+
 
 #endif	/* APPLICATION_H */
 

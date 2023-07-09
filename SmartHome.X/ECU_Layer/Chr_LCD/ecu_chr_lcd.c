@@ -49,6 +49,19 @@ Std_ReturnType lcd_4bit_intialize(const chr_lcd_4bit_t *lcd){
     return ret;
 }
 
+
+Std_ReturnType lcd_4bit_clear(const chr_lcd_4bit_t *lcd){
+    Std_ReturnType ret = E_OK;
+    
+    if(NULL == lcd){
+        ret = E_NOT_OK;
+    }
+    else{
+        ret = lcd_4bit_send_command(lcd, _LCD_CLEAR);
+
+    }
+}
+
 /**
  * 
  * @param lcd

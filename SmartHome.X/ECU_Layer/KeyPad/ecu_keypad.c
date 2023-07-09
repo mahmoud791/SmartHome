@@ -8,10 +8,10 @@
 #include "ecu_keypad.h"
 
 static const uint8 btn_values[ECU_KEYPAD_ROWS][ECU_KEYPAD_COLUMNS] = {
-                                                                        {'7', '8', '9', '/'},
-                                                                        {'4', '5', '6', '*'},
-                                                                        {'1', '2', '3', '-'},
-                                                                        {'#', '0', '=', '+'}
+                                                                        {'1', '2', '3'},
+                                                                        {'4', '5', '6'},
+                                                                        {'7', '8', '9'},
+                                                                        {'*', '0', '#'}
                                                                      };
 
 /**
@@ -53,19 +53,26 @@ Std_ReturnType keypad_get_value(const keypad_t *_keypad_obj, uint8 *value){
     if((NULL == _keypad_obj) || (NULL == value)){
         ret = E_NOT_OK;
     }
-    else{    
+    else{
+        while(1){
         for(l_rows_counter=ZERO_INIT; l_rows_counter<ECU_KEYPAD_ROWS; l_rows_counter++){
             for(l_counter=ZERO_INIT; l_counter<ECU_KEYPAD_ROWS; l_counter++){
                 ret = gpio_pin_write_logic(&(_keypad_obj->keypad_row_pins[l_counter]), GPIO_LOW);
             }
             gpio_pin_write_logic(&(_keypad_obj->keypad_row_pins[l_rows_counter]), GPIO_HIGH);
             __delay_ms(10);
+            
+            
             for(l_columns_counter=ZERO_INIT; l_columns_counter<ECU_KEYPAD_COLUMNS; l_columns_counter++){
                 ret = gpio_pin_read_logic(&(_keypad_obj->keypad_columns_pins[l_columns_counter]), &column_logic);
                 if(GPIO_HIGH == column_logic){
                     *value = btn_values[l_rows_counter][l_columns_counter];
+                    return ret;
                 }
             }
+            
+            
+        }
         }
     }
     return ret;

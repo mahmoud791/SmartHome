@@ -1,4 +1,4 @@
-# 1 "application.c"
+# 1 "UserInterfaces.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,28 +6,22 @@
 # 1 "<built-in>" 2
 # 1 "C:/Users/sacri/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "application.c" 2
+# 1 "UserInterfaces.c" 2
 
 
+# 1 "./UserInterfaces.h" 1
+# 12 "./UserInterfaces.h"
+# 1 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 1
+# 11 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 1 "./ECU_Layer/Chr_LCD/ecu_chr_lcd_cfg.h" 1
+# 11 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 2
 
-
-
-
-# 1 "./application.h" 1
-# 11 "./application.h"
-# 1 "./ECU_Layer/ecu_layer_init.h" 1
-# 11 "./ECU_Layer/ecu_layer_init.h"
-# 1 "./ECU_Layer/KeyPad/ecu_keypad.h" 1
-# 12 "./ECU_Layer/KeyPad/ecu_keypad.h"
-# 1 "./ECU_Layer/KeyPad/ecu_keypad_cfg.h" 1
-# 12 "./ECU_Layer/KeyPad/ecu_keypad.h" 2
-
-# 1 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 14 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/hal_gpio.h"
-# 1 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 12 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../std_libraries.h" 1
-# 12 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../std_libraries.h"
+# 1 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 14 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 12 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../std_libraries.h" 1
+# 12 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../std_libraries.h"
 # 1 "F:\\xc8\\pic\\include\\c99\\stdio.h" 1 3
 
 
@@ -192,7 +186,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 12 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../std_libraries.h" 2
+# 12 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../std_libraries.h" 2
 
 # 1 "F:\\xc8\\pic\\include\\c99\\stdlib.h" 1 3
 # 21 "F:\\xc8\\pic\\include\\c99\\stdlib.h" 3
@@ -256,7 +250,7 @@ typedef struct { unsigned int quot, rem; } udiv_t;
 typedef struct { unsigned long quot, rem; } uldiv_t;
 udiv_t udiv (unsigned int, unsigned int);
 uldiv_t uldiv (unsigned long, unsigned long);
-# 13 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../std_libraries.h" 2
+# 13 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../std_libraries.h" 2
 
 # 1 "F:\\xc8\\pic\\include\\c99\\string.h" 1 3
 # 25 "F:\\xc8\\pic\\include\\c99\\string.h" 3
@@ -315,11 +309,11 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 14 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../std_libraries.h" 2
-# 12 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 14 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../std_libraries.h" 2
+# 12 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../compiler.h" 1
-# 11 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../compiler.h"
+# 1 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../compiler.h" 1
+# 11 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../compiler.h"
 # 1 "C:/Users/sacri/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Users/sacri/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4606,8 +4600,8 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Users/sacri/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
-# 11 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../compiler.h" 2
-# 13 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 11 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../compiler.h" 2
+# 13 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -4619,14 +4613,14 @@ typedef signed short sint16;
 typedef signed long sint32;
 
 typedef uint8 Std_ReturnType;
-# 14 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 14 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/../device_config.h" 1
-# 15 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../device_config.h" 1
+# 15 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 16 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 37 "./ECU_Layer/KeyPad/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 16 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 37 "./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum{
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -4676,22 +4670,7 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *directio
 Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 13 "./ECU_Layer/KeyPad/ecu_keypad.h" 2
-# 22 "./ECU_Layer/KeyPad/ecu_keypad.h"
-typedef struct{
-    pin_config_t keypad_row_pins[4];
-    pin_config_t keypad_columns_pins[3];
-}keypad_t;
-
-
-Std_ReturnType keypad_initialize(const keypad_t *_keypad_obj);
-Std_ReturnType keypad_get_value(const keypad_t *_keypad_obj, uint8 *value);
-# 11 "./ECU_Layer/ecu_layer_init.h" 2
-
-# 1 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 1
-# 11 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
-# 1 "./ECU_Layer/Chr_LCD/ecu_chr_lcd_cfg.h" 1
-# 11 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 2
+# 12 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 2
 # 44 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 typedef struct{
     pin_config_t lcd_rs;
@@ -4728,30 +4707,135 @@ Std_ReturnType lcd_8bit_send_custom_char(const chr_lcd_8bit_t *lcd, uint8 row, u
 Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str);
 Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
 Std_ReturnType convert_uint32_to_string(uint32 value, uint8 *str);
-# 12 "./ECU_Layer/ecu_layer_init.h" 2
+# 12 "./UserInterfaces.h" 2
+
+# 1 "./ECU_Layer/ecu_layer_init.h" 1
+# 11 "./ECU_Layer/ecu_layer_init.h"
+# 1 "./ECU_Layer/KeyPad/ecu_keypad.h" 1
+# 12 "./ECU_Layer/KeyPad/ecu_keypad.h"
+# 1 "./ECU_Layer/KeyPad/ecu_keypad_cfg.h" 1
+# 12 "./ECU_Layer/KeyPad/ecu_keypad.h" 2
+# 22 "./ECU_Layer/KeyPad/ecu_keypad.h"
+typedef struct{
+    pin_config_t keypad_row_pins[4];
+    pin_config_t keypad_columns_pins[3];
+}keypad_t;
+
+
+Std_ReturnType keypad_initialize(const keypad_t *_keypad_obj);
+Std_ReturnType keypad_get_value(const keypad_t *_keypad_obj, uint8 *value);
+# 11 "./ECU_Layer/ecu_layer_init.h" 2
+
 
 
 void ecu_layer_intialize(void);
-# 11 "./application.h" 2
+# 13 "./UserInterfaces.h" 2
 
-# 1 "./UserInterfaces.h" 1
-# 18 "./UserInterfaces.h"
+
+
+
+
 void homeUI(void);
 void passwordUI(void);
 void settingsUI(void);
 void mainUI (void);
-# 12 "./application.h" 2
-# 7 "application.c" 2
+# 3 "UserInterfaces.c" 2
 
 
 
 
 
 
-int main() {
+extern chr_lcd_4bit_t lcd1;
+extern keypad_t keypad1;
+void (*interfaceHandler)(void) = ((void*)0);
+uint8 samefunctionFlage = 1;
 
-    ecu_layer_intialize();
-    mainUI();
 
-    return (0);
+
+
+
+void mainUI (){
+    interfaceHandler = homeUI;
+    while(1){
+        interfaceHandler();
+    }
+}
+
+
+
+void homeUI(){
+    Std_ReturnType ret = (Std_ReturnType)0x00;
+    if(!samefunctionFlage)ret = lcd_4bit_clear(&lcd1);
+
+
+    volatile uint8 keypad_val = 0;
+    ret = lcd_4bit_send_string_pos(&lcd1, 1, 4, "Welcome Home");
+    ret = lcd_4bit_send_string_pos(&lcd1, 4, 1, "Settings:#");
+    ret = keypad_get_value(&keypad1, &keypad_val);
+
+    if('#'==keypad_val){
+        interfaceHandler = passwordUI;
+        samefunctionFlage = 0;
+    }
+    else{
+        interfaceHandler = homeUI;
+        samefunctionFlage = 1;
+    }
+
+}
+
+
+
+void settingsUI(void){
+    Std_ReturnType ret = (Std_ReturnType)0x00;
+    if(!samefunctionFlage)ret = lcd_4bit_clear(&lcd1);
+
+    volatile uint8 keypad_val = 0;
+    ret = lcd_4bit_send_string_pos(&lcd1, 1, 4, "Settings");
+    ret = lcd_4bit_send_string_pos(&lcd1, 4, 1, "back:*");
+    ret = keypad_get_value(&keypad1, &keypad_val);
+    if('*'==keypad_val){
+        interfaceHandler = homeUI;
+        samefunctionFlage = 0;
+    }
+    else{
+        interfaceHandler = settingsUI;
+        samefunctionFlage = 1;
+    }
+
+}
+
+
+void passwordUI(){
+
+    uint8 password[4] = {0},rpassword[4] = {'3','5','2','4'},i = 0,errFlage = 0;
+
+
+    Std_ReturnType ret = (Std_ReturnType)0x00;
+    ret = lcd_4bit_clear(&lcd1);
+    ret = lcd_4bit_send_string_pos(&lcd1, 1, 1, "Enter Password:");
+    ret = lcd_4bit_send_string_pos(&lcd1, 4, 1, "back:*");
+    for(i=0;i<4;i++){
+        _delay((unsigned long)((180)*(4000000UL/4000.0)));
+       ret = keypad_get_value(&keypad1, &(password[i]));
+       ret = lcd_4bit_send_char_data_pos(&lcd1,1, 16+i, 'X');
+       if(password[i] != rpassword[i])errFlage =1;
+    }
+
+    if(errFlage){
+        ret = lcd_4bit_clear(&lcd1);
+        ret = lcd_4bit_send_string_pos(&lcd1, 1, 4, "Wrong Password");
+        _delay((unsigned long)((1500)*(4000000UL/4000.0)));
+        interfaceHandler = homeUI;
+    }
+    else{
+
+        interfaceHandler = settingsUI;
+
+    }
+
+
+
+
 }

@@ -30,12 +30,12 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=elf
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=${DISTDIR}/Record_203.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=${DISTDIR}/SmartHome.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=${DISTDIR}/Record_203.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=${DISTDIR}/SmartHome.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 ifeq ($(COMPARE_BUILD), true)
@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=ECU_Layer/7_Segment/ecu_seven_segment.c ECU_Layer/button/ecu_button.c ECU_Layer/Chr_LCD/ecu_chr_lcd.c ECU_Layer/DC_Motor/ecu_dc_motor.c ECU_Layer/KeyPad/ecu_keypad.c ECU_Layer/LED/ecu_led.c ECU_Layer/Rleay/ecu_relay.c ECU_Layer/Ultrasonic/Ultrasonic.c ECU_Layer/ecu_layer_init.c MCAL_Layer/ADC/hal_adc.c MCAL_Layer/CCP/hal_ccp.c MCAL_Layer/EEPROM/hal_eeprom.c MCAL_Layer/GPIO/hal_gpio.c MCAL_Layer/I2C/hal_i2c.c MCAL_Layer/Interrupt/mcal_external_interrupt.c MCAL_Layer/Interrupt/mcal_internal_interrupt.c MCAL_Layer/Interrupt/mcal_interrupt_manager.c MCAL_Layer/SPI/hal_spi.c MCAL_Layer/Timer0/hal_timr0.c MCAL_Layer/Timer1/hal_timr1.c MCAL_Layer/Timer2/hal_timr2.c MCAL_Layer/Timer3/hal_timr3.c MCAL_Layer/usart/hal_usart.c MCAL_Layer/device_config.c application.c
+SOURCEFILES_QUOTED_IF_SPACED=ECU_Layer/7_Segment/ecu_seven_segment.c ECU_Layer/button/ecu_button.c ECU_Layer/Chr_LCD/ecu_chr_lcd.c ECU_Layer/DC_Motor/ecu_dc_motor.c ECU_Layer/KeyPad/ecu_keypad.c ECU_Layer/LED/ecu_led.c ECU_Layer/Rleay/ecu_relay.c ECU_Layer/Ultrasonic/Ultrasonic.c ECU_Layer/ecu_layer_init.c MCAL_Layer/ADC/hal_adc.c MCAL_Layer/CCP/hal_ccp.c MCAL_Layer/EEPROM/hal_eeprom.c MCAL_Layer/GPIO/hal_gpio.c MCAL_Layer/I2C/hal_i2c.c MCAL_Layer/Interrupt/mcal_external_interrupt.c MCAL_Layer/Interrupt/mcal_internal_interrupt.c MCAL_Layer/Interrupt/mcal_interrupt_manager.c MCAL_Layer/SPI/hal_spi.c MCAL_Layer/Timer0/hal_timr0.c MCAL_Layer/Timer1/hal_timr1.c MCAL_Layer/Timer2/hal_timr2.c MCAL_Layer/Timer3/hal_timr3.c MCAL_Layer/usart/hal_usart.c MCAL_Layer/device_config.c application.c UserInterfaces.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ECU_Layer/7_Segment/ecu_seven_segment.p1 ${OBJECTDIR}/ECU_Layer/button/ecu_button.p1 ${OBJECTDIR}/ECU_Layer/Chr_LCD/ecu_chr_lcd.p1 ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1 ${OBJECTDIR}/ECU_Layer/KeyPad/ecu_keypad.p1 ${OBJECTDIR}/ECU_Layer/LED/ecu_led.p1 ${OBJECTDIR}/ECU_Layer/Rleay/ecu_relay.p1 ${OBJECTDIR}/ECU_Layer/Ultrasonic/Ultrasonic.p1 ${OBJECTDIR}/ECU_Layer/ecu_layer_init.p1 ${OBJECTDIR}/MCAL_Layer/ADC/hal_adc.p1 ${OBJECTDIR}/MCAL_Layer/CCP/hal_ccp.p1 ${OBJECTDIR}/MCAL_Layer/EEPROM/hal_eeprom.p1 ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1 ${OBJECTDIR}/MCAL_Layer/I2C/hal_i2c.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_external_interrupt.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_internal_interrupt.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_interrupt_manager.p1 ${OBJECTDIR}/MCAL_Layer/SPI/hal_spi.p1 ${OBJECTDIR}/MCAL_Layer/Timer0/hal_timr0.p1 ${OBJECTDIR}/MCAL_Layer/Timer1/hal_timr1.p1 ${OBJECTDIR}/MCAL_Layer/Timer2/hal_timr2.p1 ${OBJECTDIR}/MCAL_Layer/Timer3/hal_timr3.p1 ${OBJECTDIR}/MCAL_Layer/usart/hal_usart.p1 ${OBJECTDIR}/MCAL_Layer/device_config.p1 ${OBJECTDIR}/application.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/ECU_Layer/7_Segment/ecu_seven_segment.p1.d ${OBJECTDIR}/ECU_Layer/button/ecu_button.p1.d ${OBJECTDIR}/ECU_Layer/Chr_LCD/ecu_chr_lcd.p1.d ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1.d ${OBJECTDIR}/ECU_Layer/KeyPad/ecu_keypad.p1.d ${OBJECTDIR}/ECU_Layer/LED/ecu_led.p1.d ${OBJECTDIR}/ECU_Layer/Rleay/ecu_relay.p1.d ${OBJECTDIR}/ECU_Layer/Ultrasonic/Ultrasonic.p1.d ${OBJECTDIR}/ECU_Layer/ecu_layer_init.p1.d ${OBJECTDIR}/MCAL_Layer/ADC/hal_adc.p1.d ${OBJECTDIR}/MCAL_Layer/CCP/hal_ccp.p1.d ${OBJECTDIR}/MCAL_Layer/EEPROM/hal_eeprom.p1.d ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1.d ${OBJECTDIR}/MCAL_Layer/I2C/hal_i2c.p1.d ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_external_interrupt.p1.d ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_internal_interrupt.p1.d ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_interrupt_manager.p1.d ${OBJECTDIR}/MCAL_Layer/SPI/hal_spi.p1.d ${OBJECTDIR}/MCAL_Layer/Timer0/hal_timr0.p1.d ${OBJECTDIR}/MCAL_Layer/Timer1/hal_timr1.p1.d ${OBJECTDIR}/MCAL_Layer/Timer2/hal_timr2.p1.d ${OBJECTDIR}/MCAL_Layer/Timer3/hal_timr3.p1.d ${OBJECTDIR}/MCAL_Layer/usart/hal_usart.p1.d ${OBJECTDIR}/MCAL_Layer/device_config.p1.d ${OBJECTDIR}/application.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ECU_Layer/7_Segment/ecu_seven_segment.p1 ${OBJECTDIR}/ECU_Layer/button/ecu_button.p1 ${OBJECTDIR}/ECU_Layer/Chr_LCD/ecu_chr_lcd.p1 ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1 ${OBJECTDIR}/ECU_Layer/KeyPad/ecu_keypad.p1 ${OBJECTDIR}/ECU_Layer/LED/ecu_led.p1 ${OBJECTDIR}/ECU_Layer/Rleay/ecu_relay.p1 ${OBJECTDIR}/ECU_Layer/Ultrasonic/Ultrasonic.p1 ${OBJECTDIR}/ECU_Layer/ecu_layer_init.p1 ${OBJECTDIR}/MCAL_Layer/ADC/hal_adc.p1 ${OBJECTDIR}/MCAL_Layer/CCP/hal_ccp.p1 ${OBJECTDIR}/MCAL_Layer/EEPROM/hal_eeprom.p1 ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1 ${OBJECTDIR}/MCAL_Layer/I2C/hal_i2c.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_external_interrupt.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_internal_interrupt.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_interrupt_manager.p1 ${OBJECTDIR}/MCAL_Layer/SPI/hal_spi.p1 ${OBJECTDIR}/MCAL_Layer/Timer0/hal_timr0.p1 ${OBJECTDIR}/MCAL_Layer/Timer1/hal_timr1.p1 ${OBJECTDIR}/MCAL_Layer/Timer2/hal_timr2.p1 ${OBJECTDIR}/MCAL_Layer/Timer3/hal_timr3.p1 ${OBJECTDIR}/MCAL_Layer/usart/hal_usart.p1 ${OBJECTDIR}/MCAL_Layer/device_config.p1 ${OBJECTDIR}/application.p1 ${OBJECTDIR}/UserInterfaces.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/ECU_Layer/7_Segment/ecu_seven_segment.p1.d ${OBJECTDIR}/ECU_Layer/button/ecu_button.p1.d ${OBJECTDIR}/ECU_Layer/Chr_LCD/ecu_chr_lcd.p1.d ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1.d ${OBJECTDIR}/ECU_Layer/KeyPad/ecu_keypad.p1.d ${OBJECTDIR}/ECU_Layer/LED/ecu_led.p1.d ${OBJECTDIR}/ECU_Layer/Rleay/ecu_relay.p1.d ${OBJECTDIR}/ECU_Layer/Ultrasonic/Ultrasonic.p1.d ${OBJECTDIR}/ECU_Layer/ecu_layer_init.p1.d ${OBJECTDIR}/MCAL_Layer/ADC/hal_adc.p1.d ${OBJECTDIR}/MCAL_Layer/CCP/hal_ccp.p1.d ${OBJECTDIR}/MCAL_Layer/EEPROM/hal_eeprom.p1.d ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1.d ${OBJECTDIR}/MCAL_Layer/I2C/hal_i2c.p1.d ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_external_interrupt.p1.d ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_internal_interrupt.p1.d ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_interrupt_manager.p1.d ${OBJECTDIR}/MCAL_Layer/SPI/hal_spi.p1.d ${OBJECTDIR}/MCAL_Layer/Timer0/hal_timr0.p1.d ${OBJECTDIR}/MCAL_Layer/Timer1/hal_timr1.p1.d ${OBJECTDIR}/MCAL_Layer/Timer2/hal_timr2.p1.d ${OBJECTDIR}/MCAL_Layer/Timer3/hal_timr3.p1.d ${OBJECTDIR}/MCAL_Layer/usart/hal_usart.p1.d ${OBJECTDIR}/MCAL_Layer/device_config.p1.d ${OBJECTDIR}/application.p1.d ${OBJECTDIR}/UserInterfaces.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/ECU_Layer/7_Segment/ecu_seven_segment.p1 ${OBJECTDIR}/ECU_Layer/button/ecu_button.p1 ${OBJECTDIR}/ECU_Layer/Chr_LCD/ecu_chr_lcd.p1 ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1 ${OBJECTDIR}/ECU_Layer/KeyPad/ecu_keypad.p1 ${OBJECTDIR}/ECU_Layer/LED/ecu_led.p1 ${OBJECTDIR}/ECU_Layer/Rleay/ecu_relay.p1 ${OBJECTDIR}/ECU_Layer/Ultrasonic/Ultrasonic.p1 ${OBJECTDIR}/ECU_Layer/ecu_layer_init.p1 ${OBJECTDIR}/MCAL_Layer/ADC/hal_adc.p1 ${OBJECTDIR}/MCAL_Layer/CCP/hal_ccp.p1 ${OBJECTDIR}/MCAL_Layer/EEPROM/hal_eeprom.p1 ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1 ${OBJECTDIR}/MCAL_Layer/I2C/hal_i2c.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_external_interrupt.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_internal_interrupt.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_interrupt_manager.p1 ${OBJECTDIR}/MCAL_Layer/SPI/hal_spi.p1 ${OBJECTDIR}/MCAL_Layer/Timer0/hal_timr0.p1 ${OBJECTDIR}/MCAL_Layer/Timer1/hal_timr1.p1 ${OBJECTDIR}/MCAL_Layer/Timer2/hal_timr2.p1 ${OBJECTDIR}/MCAL_Layer/Timer3/hal_timr3.p1 ${OBJECTDIR}/MCAL_Layer/usart/hal_usart.p1 ${OBJECTDIR}/MCAL_Layer/device_config.p1 ${OBJECTDIR}/application.p1
+OBJECTFILES=${OBJECTDIR}/ECU_Layer/7_Segment/ecu_seven_segment.p1 ${OBJECTDIR}/ECU_Layer/button/ecu_button.p1 ${OBJECTDIR}/ECU_Layer/Chr_LCD/ecu_chr_lcd.p1 ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1 ${OBJECTDIR}/ECU_Layer/KeyPad/ecu_keypad.p1 ${OBJECTDIR}/ECU_Layer/LED/ecu_led.p1 ${OBJECTDIR}/ECU_Layer/Rleay/ecu_relay.p1 ${OBJECTDIR}/ECU_Layer/Ultrasonic/Ultrasonic.p1 ${OBJECTDIR}/ECU_Layer/ecu_layer_init.p1 ${OBJECTDIR}/MCAL_Layer/ADC/hal_adc.p1 ${OBJECTDIR}/MCAL_Layer/CCP/hal_ccp.p1 ${OBJECTDIR}/MCAL_Layer/EEPROM/hal_eeprom.p1 ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1 ${OBJECTDIR}/MCAL_Layer/I2C/hal_i2c.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_external_interrupt.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_internal_interrupt.p1 ${OBJECTDIR}/MCAL_Layer/Interrupt/mcal_interrupt_manager.p1 ${OBJECTDIR}/MCAL_Layer/SPI/hal_spi.p1 ${OBJECTDIR}/MCAL_Layer/Timer0/hal_timr0.p1 ${OBJECTDIR}/MCAL_Layer/Timer1/hal_timr1.p1 ${OBJECTDIR}/MCAL_Layer/Timer2/hal_timr2.p1 ${OBJECTDIR}/MCAL_Layer/Timer3/hal_timr3.p1 ${OBJECTDIR}/MCAL_Layer/usart/hal_usart.p1 ${OBJECTDIR}/MCAL_Layer/device_config.p1 ${OBJECTDIR}/application.p1 ${OBJECTDIR}/UserInterfaces.p1
 
 # Source Files
-SOURCEFILES=ECU_Layer/7_Segment/ecu_seven_segment.c ECU_Layer/button/ecu_button.c ECU_Layer/Chr_LCD/ecu_chr_lcd.c ECU_Layer/DC_Motor/ecu_dc_motor.c ECU_Layer/KeyPad/ecu_keypad.c ECU_Layer/LED/ecu_led.c ECU_Layer/Rleay/ecu_relay.c ECU_Layer/Ultrasonic/Ultrasonic.c ECU_Layer/ecu_layer_init.c MCAL_Layer/ADC/hal_adc.c MCAL_Layer/CCP/hal_ccp.c MCAL_Layer/EEPROM/hal_eeprom.c MCAL_Layer/GPIO/hal_gpio.c MCAL_Layer/I2C/hal_i2c.c MCAL_Layer/Interrupt/mcal_external_interrupt.c MCAL_Layer/Interrupt/mcal_internal_interrupt.c MCAL_Layer/Interrupt/mcal_interrupt_manager.c MCAL_Layer/SPI/hal_spi.c MCAL_Layer/Timer0/hal_timr0.c MCAL_Layer/Timer1/hal_timr1.c MCAL_Layer/Timer2/hal_timr2.c MCAL_Layer/Timer3/hal_timr3.c MCAL_Layer/usart/hal_usart.c MCAL_Layer/device_config.c application.c
+SOURCEFILES=ECU_Layer/7_Segment/ecu_seven_segment.c ECU_Layer/button/ecu_button.c ECU_Layer/Chr_LCD/ecu_chr_lcd.c ECU_Layer/DC_Motor/ecu_dc_motor.c ECU_Layer/KeyPad/ecu_keypad.c ECU_Layer/LED/ecu_led.c ECU_Layer/Rleay/ecu_relay.c ECU_Layer/Ultrasonic/Ultrasonic.c ECU_Layer/ecu_layer_init.c MCAL_Layer/ADC/hal_adc.c MCAL_Layer/CCP/hal_ccp.c MCAL_Layer/EEPROM/hal_eeprom.c MCAL_Layer/GPIO/hal_gpio.c MCAL_Layer/I2C/hal_i2c.c MCAL_Layer/Interrupt/mcal_external_interrupt.c MCAL_Layer/Interrupt/mcal_internal_interrupt.c MCAL_Layer/Interrupt/mcal_interrupt_manager.c MCAL_Layer/SPI/hal_spi.c MCAL_Layer/Timer0/hal_timr0.c MCAL_Layer/Timer1/hal_timr1.c MCAL_Layer/Timer2/hal_timr2.c MCAL_Layer/Timer3/hal_timr3.c MCAL_Layer/usart/hal_usart.c MCAL_Layer/device_config.c application.c UserInterfaces.c
 
 
 
@@ -82,7 +82,7 @@ FIXDEPS=fixDeps
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
-	${MAKE}  -f nbproject/Makefile-default.mk ${DISTDIR}/Record_203.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE}  -f nbproject/Makefile-default.mk ${DISTDIR}/SmartHome.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=18F4620
 # ------------------------------------------------------------------------------------
@@ -288,6 +288,14 @@ ${OBJECTDIR}/application.p1: application.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/application.d ${OBJECTDIR}/application.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/application.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/UserInterfaces.p1: UserInterfaces.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/UserInterfaces.p1.d 
+	@${RM} ${OBJECTDIR}/UserInterfaces.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit3   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/UserInterfaces.p1 UserInterfaces.c 
+	@-${MV} ${OBJECTDIR}/UserInterfaces.d ${OBJECTDIR}/UserInterfaces.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/UserInterfaces.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/ECU_Layer/7_Segment/ecu_seven_segment.p1: ECU_Layer/7_Segment/ecu_seven_segment.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/ECU_Layer/7_Segment" 
@@ -489,6 +497,14 @@ ${OBJECTDIR}/application.p1: application.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/application.d ${OBJECTDIR}/application.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/application.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/UserInterfaces.p1: UserInterfaces.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/UserInterfaces.p1.d 
+	@${RM} ${OBJECTDIR}/UserInterfaces.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/UserInterfaces.p1 UserInterfaces.c 
+	@-${MV} ${OBJECTDIR}/UserInterfaces.d ${OBJECTDIR}/UserInterfaces.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/UserInterfaces.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -506,15 +522,15 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${DISTDIR}/Record_203.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+${DISTDIR}/SmartHome.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/Record_203.${IMAGE_TYPE}.map  -D__DEBUG=1  -mdebugger=pickit3  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -mrom=default,-fd30-ffff -mram=default,-ef4-eff,-f9c-f9c,-fd4-fd4,-fdb-fdf,-fe3-fe7,-feb-fef,-ffd-fff  $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/Record_203.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
-	@${RM} ${DISTDIR}/Record_203.${IMAGE_TYPE}.hex 
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/SmartHome.X.${IMAGE_TYPE}.map  -D__DEBUG=1  -mdebugger=pickit3  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -mrom=default,-fd30-ffff -mram=default,-ef4-eff,-f9c-f9c,-fd4-fd4,-fdb-fdf,-fe3-fe7,-feb-fef,-ffd-fff  $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/SmartHome.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	@${RM} ${DISTDIR}/SmartHome.X.${IMAGE_TYPE}.hex 
 	
 else
-${DISTDIR}/Record_203.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+${DISTDIR}/SmartHome.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/Record_203.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gcoff -mstack=compiled:auto:auto:auto     $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/Record_203.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/SmartHome.X.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gcoff -mstack=compiled:auto:auto:auto     $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/SmartHome.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	
 endif
 

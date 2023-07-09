@@ -14,7 +14,7 @@
 
 /* ----------------- Macro Declarations -----------------*/
 #define ECU_KEYPAD_ROWS    4
-#define ECU_KEYPAD_COLUMNS 4 
+#define ECU_KEYPAD_COLUMNS 3 
 
 /* ----------------- Macro Functions Declarations -----------------*/
 
